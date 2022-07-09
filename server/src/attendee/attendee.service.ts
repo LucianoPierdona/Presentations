@@ -1,21 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { PinoLogger } from 'nestjs-pino';
-import { AttendeeResDto } from './dto/attendee-res.dto';
+import { Repository } from 'typeorm';
+import { Attendee } from './attendee.entity';
+
 import { CreateAttendeeReqDto } from './dto/create-attendee-req.dto';
 
 @Injectable()
 export class AttendeeService {
-  constructor(private logger: PinoLogger) {
+  constructor(
+    @InjectRepository(Attendee)
+    private attendeeRepository: Repository<Attendee>,
+    private logger: PinoLogger,
+  ) {
     logger.setContext('AttendeeService');
   }
 
-  async create(body: CreateAttendeeReqDto): Promise<AttendeeResDto> {
-    const createdAttendee = {
-      ...body,
-      id: 1,
-      registered: new Date().toISOString(),
-    };
+  async create({
+    company,
+    email,
+    name,
+  }: CreateAttendeeReqDto): Promise<Attendee> {
+    const attendee = new Attendee();
 
-    return new AttendeeResDto(createdAttendee);
+    attendee.company = company;
+    attendee.email = email;
+    attendee.name = name;
+
+    await this.attendeeRepository.save(attendee);
+
+    return attendee;
   }
 }
