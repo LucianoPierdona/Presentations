@@ -1,4 +1,4 @@
-import { PresentationAttendee } from 'src/presentation/presentation-attendees/presentation-attendee.entity';
+import { PresentationAttendee } from '../presentation/presentation-attendees/presentation-attendee.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Base } from '../common/entities/base.entity';
 

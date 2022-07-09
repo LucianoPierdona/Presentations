@@ -2,10 +2,12 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Base } from '../common/entities/base.entity';
+import { PresentationAttendee } from './presentation-attendees/presentation-attendee.entity';
 import { Speaker } from './speaker/speaker.entity';
 
 @Entity('presentations')
@@ -28,4 +30,10 @@ export class Presentation extends Base {
 
   @Column({ type: 'int', nullable: true })
   speakerId: string;
+
+  @OneToMany(
+    (type) => PresentationAttendee,
+    (presentationAttendee) => presentationAttendee.presentation,
+  )
+  attendees: PresentationAttendee[];
 }

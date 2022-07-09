@@ -2,7 +2,9 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Param,
   Post,
+  Put,
   UseInterceptors,
 } from '@nestjs/common';
 import { CreatePresentationReqDto } from './dto/create-presentation-req.dto';
@@ -19,6 +21,20 @@ export class PresentationController {
     @Body() body: CreatePresentationReqDto,
   ): Promise<PresentationResDto> {
     const presentation = await this.presentationService.create(body);
+
+    return new PresentationResDto(presentation);
+  }
+
+  @Put(':presentationId/attendees/:attendeeId')
+  async addAttendeeToPresentation(
+    @Param('presentationId') presentationId: number,
+    @Param('attendeeId') attendeeId: number,
+  ): Promise<PresentationResDto> {
+    const presentation =
+      await this.presentationService.addAttendeeeToPresentation({
+        presentationId,
+        attendeeId,
+      });
 
     return new PresentationResDto(presentation);
   }
