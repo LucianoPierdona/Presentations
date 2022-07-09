@@ -1,10 +1,4 @@
-import {
-  IsDefined,
-  IsEmail,
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-} from 'class-validator';
+import { IsDefined, IsNotEmpty, IsNumber } from 'class-validator';
 import { CreateSpeakerReqDto } from './create-speaker-req.dto';
 
 export class SpeakerResDto extends CreateSpeakerReqDto {
