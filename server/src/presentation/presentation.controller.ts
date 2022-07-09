@@ -1,9 +1,16 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Post,
+  UseInterceptors,
+} from '@nestjs/common';
 import { CreatePresentationReqDto } from './dto/create-presentation-req.dto';
 import { PresentationResDto } from './dto/presentation-res.dto';
 import { PresentationService } from './presentation.service';
 
 @Controller('presentation')
+@UseInterceptors(ClassSerializerInterceptor)
 export class PresentationController {
   constructor(private presentationService: PresentationService) {}
 

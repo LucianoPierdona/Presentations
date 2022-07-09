@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerModule } from 'nestjs-pino';
 import { join } from 'path';
-import { AttendeeModule } from './attendee/attendee.module';
+import { AttendeeModule } from 'src/attendee/attendee.module';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from './config/config.service';
 import { PresentationModule } from './presentation/presentation.module';

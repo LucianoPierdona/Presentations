@@ -1,4 +1,4 @@
-import { Type } from 'class-transformer';
+import { Exclude, Type } from 'class-transformer';
 import {
   IsDefined,
   IsNotEmpty,
@@ -7,10 +7,20 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
+import { Presentation } from '../presentation.entity';
 import { SpeakerResDto } from '../speaker/dto/speaker-res.dto';
 import { CreatePresentationReqDto } from './create-presentation-req.dto';
 
 export class PresentationResDto extends CreatePresentationReqDto {
+  @Exclude()
+  createdAt: Date;
+
+  @Exclude()
+  deletedAt: Date;
+
+  @Exclude()
+  updatedAt: Date;
+
   @IsNumber()
   @IsDefined()
   @IsNotEmpty()
@@ -22,10 +32,7 @@ export class PresentationResDto extends CreatePresentationReqDto {
   @Type(() => SpeakerResDto)
   speaker: SpeakerResDto;
 
-  constructor(
-    presentation: Partial<PresentationResDto>,
-    speaker: SpeakerResDto,
-  ) {
+  constructor(presentation: Partial<Presentation>, speaker: SpeakerResDto) {
     super();
 
     Object.assign(this, presentation);
