@@ -1,22 +1,38 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { PinoLogger } from 'nestjs-pino';
+import { Repository } from 'typeorm';
 
 import { CreateSpeakerReqDto } from './dto/create-speaker-req.dto';
 
 import { SpeakerResDto } from './dto/speaker-res.dto';
+import { Speaker } from './speaker.entity';
 
 @Injectable()
 export class SpeakerService {
-  constructor(private logger: PinoLogger) {
+  constructor(
+    @InjectRepository(Speaker)
+    private speakerRepository: Repository<Speaker>,
+    private logger: PinoLogger,
+  ) {
     logger.setContext('SpeakerService');
   }
 
-  async create(body: CreateSpeakerReqDto): Promise<SpeakerResDto> {
-    const createdSpeaker = {
-      ...body,
-      id: 1,
-    };
+  async create({
+    bio,
+    company,
+    email,
+    name,
+  }: CreateSpeakerReqDto): Promise<SpeakerResDto> {
+    const speaker = new Speaker();
 
-    return new SpeakerResDto(createdSpeaker);
+    speaker.bio = bio;
+    speaker.company = company;
+    speaker.email = email;
+    speaker.name = name;
+
+    await this.speakerRepository.save(speaker);
+
+    return new SpeakerResDto(speaker);
   }
 }
