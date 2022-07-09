@@ -23,7 +23,7 @@ export class SpeakerService {
     company,
     email,
     name,
-  }: CreateSpeakerReqDto): Promise<SpeakerResDto> {
+  }: CreateSpeakerReqDto): Promise<Speaker> {
     const speaker = new Speaker();
 
     speaker.bio = bio;
@@ -33,6 +33,6 @@ export class SpeakerService {
 
     await this.speakerRepository.save(speaker);
 
-    return new SpeakerResDto(speaker);
+    return speaker;
   }
 }

@@ -23,7 +23,7 @@ export class PresentationService {
     presentation,
     room,
     speaker,
-  }: CreatePresentationReqDto): Promise<PresentationResDto> {
+  }: CreatePresentationReqDto): Promise<Presentation> {
     const createdSpeaker = await this.speakerService.create(speaker);
 
     const createdPresentation = new Presentation();
@@ -31,9 +31,10 @@ export class PresentationService {
     createdPresentation.details = details;
     createdPresentation.presentation = presentation;
     createdPresentation.room = room;
+    createdPresentation.speaker = createdSpeaker;
 
     await this.presentationRepository.save(createdPresentation);
 
-    return new PresentationResDto(createdPresentation, createdSpeaker);
+    return createdPresentation;
   }
 }

@@ -21,6 +21,9 @@ export class PresentationResDto extends CreatePresentationReqDto {
   @Exclude()
   updatedAt: Date;
 
+  @Exclude()
+  speakerId: number;
+
   @IsNumber()
   @IsDefined()
   @IsNotEmpty()
@@ -32,11 +35,11 @@ export class PresentationResDto extends CreatePresentationReqDto {
   @Type(() => SpeakerResDto)
   speaker: SpeakerResDto;
 
-  constructor(presentation: Partial<Presentation>, speaker: SpeakerResDto) {
+  constructor(presentation: Partial<Presentation>) {
     super();
 
     Object.assign(this, presentation);
 
-    this.speaker = speaker;
+    this.speaker = new SpeakerResDto(presentation.speaker);
   }
 }

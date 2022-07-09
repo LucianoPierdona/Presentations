@@ -18,6 +18,8 @@ export class PresentationController {
   async create(
     @Body() body: CreatePresentationReqDto,
   ): Promise<PresentationResDto> {
-    return this.presentationService.create(body);
+    const presentation = await this.presentationService.create(body);
+
+    return new PresentationResDto(presentation);
   }
 }
