@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PinoLogger } from 'nestjs-pino';
-import { Repository } from 'typeorm';
+import { FindOneOptions, Repository } from 'typeorm';
 import { Attendee } from './attendee.entity';
 
 import { CreateAttendeeReqDto } from './dto/create-attendee-req.dto';
@@ -30,5 +30,12 @@ export class AttendeeService {
     await this.attendeeRepository.save(attendee);
 
     return attendee;
+  }
+
+  async findOne(
+    id: number,
+    options?: FindOneOptions<Attendee>,
+  ): Promise<Attendee> {
+    return this.attendeeRepository.findOne(id, options);
   }
 }

@@ -31,7 +31,7 @@ export class PresentationController {
     @Param('attendeeId') attendeeId: number,
   ): Promise<PresentationResDto> {
     const presentation =
-      await this.presentationService.addAttendeeeToPresentation({
+      await this.presentationService.addAttendeeToPresentation({
         presentationId,
         attendeeId,
       });
