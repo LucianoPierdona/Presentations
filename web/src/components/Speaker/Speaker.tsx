@@ -1,10 +1,6 @@
-import React, { FormEvent, useReducer, useState } from "react";
+import React from "react";
 import Input from "../Input/Input";
-import { ICreatePresentationProps } from "../Presentation/Presentation";
-
-export interface ISpeakerProps {
-  setValues: React.Dispatch<React.SetStateAction<ICreatePresentationProps>>;
-}
+import { ISpeakerProps } from "./speaker.types";
 
 function Speaker({ setValues }: ISpeakerProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,9 +1,5 @@
+import { IButtonProps } from "./button.types";
 import "./style.css";
-
-export interface IButtonProps {
-  text: string;
-  type?: "button" | "submit" | "reset" | undefined;
-}
 
 function Button({ text, type = "button" }: IButtonProps) {
   return (

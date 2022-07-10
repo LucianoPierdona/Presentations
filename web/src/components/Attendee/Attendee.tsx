@@ -4,18 +4,7 @@ import Input from "../Input/Input";
 
 import { toast } from "react-toastify";
 import Button from "../Button/Button";
-
-export interface ICreateAttendeeProps {
-  name: string;
-  email: string;
-  company: string;
-}
-
-const initialState: ICreateAttendeeProps = {
-  name: "",
-  company: "",
-  email: "",
-};
+import { ICreateAttendeeProps, initialState } from "./atendee.types";
 
 function Attendee() {
   const [values, setValues] = useState<ICreateAttendeeProps>(initialState);

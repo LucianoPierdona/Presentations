@@ -1,35 +1,11 @@
-import axios from "axios";
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { request } from "../../utils/request";
 import Input from "../Input/Input";
 import Speaker from "../Speaker/Speaker";
 import "./style.css";
 import { toast } from "react-toastify";
 import Button from "../Button/Button";
-
-export interface ICreatePresentationProps {
-  presentation: string;
-  details: string;
-  room: number;
-  speaker: {
-    name: string;
-    email: string;
-    company: string;
-    bio: string;
-  };
-}
-
-const initialState: ICreatePresentationProps = {
-  presentation: "",
-  details: "",
-  room: 0,
-  speaker: {
-    name: "",
-    email: "",
-    company: "",
-    bio: "",
-  },
-};
+import { ICreatePresentationProps, initialState } from "./presentation.types";
 
 function Presentation() {
   const [values, setValues] = useState<ICreatePresentationProps>(initialState);

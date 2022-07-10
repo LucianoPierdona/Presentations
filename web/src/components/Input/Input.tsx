@@ -1,11 +1,5 @@
+import { IInputProps } from "./input.types";
 import "./style.css";
-
-export interface IInputProps {
-  name: string;
-  field: string;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: React.HTMLInputTypeAttribute;
-}
 
 function Input({ name, field, handleChange, type = "text" }: IInputProps) {
   return (
