@@ -31,7 +31,7 @@ import { PresentationModule } from './presentation/presentation.module';
         migrations: [
           join(__dirname, '../', 'database', 'migrations') + '**/*.js',
         ],
-        migrationsRun: false,
+        migrationsRun: true,
       }),
       inject: [ConfigService],
     }),
