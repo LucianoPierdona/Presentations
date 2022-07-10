@@ -1,0 +1,28 @@
+.btns {
+  text-align: center;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 2px;
+  padding: 10px 25px;
+  background: none;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  color: #666;
+  font-size: 1.125em;
+  outline: none;
+  transition: all 100ms ease-out;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: translateY(-3px);
+}
+
+.btn-confirm {
+  border: 1px solid var(--omrs-color-ink-high-contrast);
+  background: var(--omrs-color-ink-high-contrast);
+  color: #fff;
+}

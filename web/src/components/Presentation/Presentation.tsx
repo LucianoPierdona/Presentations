@@ -5,6 +5,7 @@ import Input from "../Input/Input";
 import Speaker from "../Speaker/Speaker";
 import "./style.css";
 import { toast } from "react-toastify";
+import Button from "../Button/Button";
 
 export interface ICreatePresentationProps {
   presentation: string;
@@ -13,7 +14,7 @@ export interface ICreatePresentationProps {
   speaker: {
     name: string;
     email: string;
-    phone: string;
+    company: string;
     bio: string;
   };
 }
@@ -25,7 +26,7 @@ const initialState: ICreatePresentationProps = {
   speaker: {
     name: "",
     email: "",
-    phone: "",
+    company: "",
     bio: "",
   },
 };
@@ -84,11 +85,7 @@ function Presentation() {
             <h4 className="title">Speaker</h4>
             <Speaker setValues={setValues} />
 
-            <div className="btns">
-              <button type="submit" className="btn btn-confirm">
-                Create
-              </button>
-            </div>
+            <Button text="Create" />
           </form>
         </div>
       </div>

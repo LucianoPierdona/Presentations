@@ -21,3 +21,15 @@ body {
 	--omrs-color-bg-high-contrast: #ffffff;
 	
 }
+
+#root {
+  width: 100%;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
