@@ -17,7 +17,7 @@ function PresentationAttendee() {
 
   useEffect(() => {
     fetchPresentationsAndAttendees();
-  }, [fetchPresentationsAndAttendees]);
+  }, []);
 
   return (
     <>
