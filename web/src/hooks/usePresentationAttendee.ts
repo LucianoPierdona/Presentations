@@ -62,7 +62,7 @@ export const usePresentationAttendee = () => {
       );
       const formattedAttendees = resAttendee.data.map((attendee) => ({
         value: attendee.id.toString(),
-        label: attendee.name,
+        label: attendee.email,
       }));
       setPresentations(formattedPresentations);
       setAttendees(formattedAttendees);
