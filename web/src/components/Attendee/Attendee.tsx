@@ -1,39 +1,10 @@
-import React, { FormEvent, useState } from "react";
-import { request } from "../../utils/request";
 import Input from "../Input/Input";
 
-import { toast } from "react-toastify";
 import Button from "../Button/Button";
-import { ICreateAttendeeProps, initialState } from "./atendee.types";
+import { useAttendee } from "../../hooks/useAttendee";
 
 function Attendee() {
-  const [values, setValues] = useState<ICreateAttendeeProps>(initialState);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
-    setValues((oldValues) => ({
-      ...oldValues,
-      [event.target.name]: value,
-    }));
-  };
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    await request
-      .post("/attendees", values)
-      .then((res) => {
-        toast.success("Attendee created successfully");
-
-        setValues(initialState);
-      })
-      .catch((err) => {
-        err.response.data.message.map((message: string) => {
-          toast.error(message);
-        });
-      });
-  };
+  const { handleChange, handleSubmit } = useAttendee();
 
   return (
     <>

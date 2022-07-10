@@ -1,17 +1,10 @@
 import React from "react";
+import { useSpeaker } from "../../hooks/useSpeaker";
 import Input from "../Input/Input";
 import { ISpeakerProps } from "./speaker.types";
 
-function Speaker({ setValues }: ISpeakerProps) {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues((oldValues) => ({
-      ...oldValues,
-      speaker: {
-        ...oldValues.speaker,
-        [event.target.name]: event.target.value,
-      },
-    }));
-  };
+function Speaker(props: ISpeakerProps) {
+  const { handleChange } = useSpeaker(props);
 
   return (
     <>

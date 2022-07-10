@@ -1,44 +1,11 @@
-import React, { FormEvent, useState } from "react";
-import { request } from "../../utils/request";
 import Input from "../Input/Input";
 import Speaker from "../Speaker/Speaker";
 import "./style.css";
-import { toast } from "react-toastify";
 import Button from "../Button/Button";
-import { ICreatePresentationProps, initialState } from "./presentation.types";
+import { usePresentation } from "../../hooks/usePresentation";
 
 function Presentation() {
-  const [values, setValues] = useState<ICreatePresentationProps>(initialState);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const isNumber = event.target.type === "number";
-
-    const { value } = event.target;
-
-    setValues((oldValues) => ({
-      ...oldValues,
-      [event.target.name]: isNumber ? Number(value) : value,
-    }));
-  };
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    await request
-      .post("/presentation", values)
-      .then((res) => {
-        console.log(res);
-
-        toast.success("Presentation created successfully");
-
-        setValues(initialState);
-      })
-      .catch((err) => {
-        err.response.data.message.map((message: string) => {
-          toast.error(message);
-        });
-      });
-  };
+  const { handleChange, handleSubmit, setValues } = usePresentation();
 
   return (
     <>
