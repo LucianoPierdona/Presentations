@@ -72,9 +72,9 @@ _Install and run_
    cd web && yarn
    cd server && yarn
    ```
-3. run docker compose
+3. run docker compose (the process to compile Nest.js might take longer on Windows OS)
    ```sh
-   cd server && docker-compose up
+   cd server && docker-compose build && docker-compose up
    ```
 3. run react
    ```sh
