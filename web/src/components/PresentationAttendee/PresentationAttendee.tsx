@@ -16,6 +16,8 @@ function PresentationAttendee() {
   } = usePresentationAttendee();
 
   useEffect(() => {
+    fetchPresentationsAndAttendees();
+
     setInterval(() => {
       fetchPresentationsAndAttendees();
     }, 15000);
