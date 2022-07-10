@@ -27,8 +27,6 @@ export const usePresentation = () => {
     await request
       .post("/presentation", values)
       .then((res) => {
-        console.log(res);
-
         toast.success("Presentation created successfully");
 
         setValues(initialState);
