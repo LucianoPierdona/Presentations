@@ -38,4 +38,8 @@ export class AttendeeService {
   ): Promise<Attendee> {
     return this.attendeeRepository.findOne(id, options);
   }
+
+  async list(): Promise<Attendee[]> {
+    return this.attendeeRepository.find();
+  }
 }
