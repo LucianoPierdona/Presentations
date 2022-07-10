@@ -85,6 +85,10 @@ _Install and run_
    web: http://localhost:3000/
    server: http://localhost:3001/
    ```
+6. server documentation url
+   ```sh
+   http://localhost:3001/api
+   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
