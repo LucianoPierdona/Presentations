@@ -2,6 +2,7 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Get,
   Param,
   Post,
   Put,
@@ -23,6 +24,15 @@ export class PresentationController {
     const presentation = await this.presentationService.create(body);
 
     return new PresentationResDto(presentation);
+  }
+
+  @Get()
+  async list(): Promise<PresentationResDto[]> {
+    const presentations = await this.presentationService.list();
+
+    return presentations.map(
+      (presentation) => new PresentationResDto(presentation),
+    );
   }
 
   @Put(':presentationId/attendees/:attendeeId')

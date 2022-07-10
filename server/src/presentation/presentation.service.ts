@@ -72,4 +72,8 @@ export class PresentationService {
 
     return presentationWithAttendees;
   }
+
+  async list(): Promise<Presentation[]> {
+    return this.presentationRepository.find();
+  }
 }
