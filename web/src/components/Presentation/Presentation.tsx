@@ -28,7 +28,7 @@ function Presentation() {
             <h4 className="title">Speaker</h4>
             <Speaker setValues={setValues} />
 
-            <Button text="Create" />
+            <Button text="Create" type={"submit"} />
           </form>
         </div>
       </div>

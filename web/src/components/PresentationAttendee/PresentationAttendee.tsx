@@ -16,7 +16,9 @@ function PresentationAttendee() {
   } = usePresentationAttendee();
 
   useEffect(() => {
-    fetchPresentationsAndAttendees();
+    setInterval(() => {
+      fetchPresentationsAndAttendees();
+    }, 15000);
   }, []);
 
   return (
@@ -24,27 +26,31 @@ function PresentationAttendee() {
       <div className="container">
         <div>
           <h4 className="title">Add Attendee to Presentation</h4>
-          <form id={"form"} onSubmit={handleSubmit}>
-            <div className="radio-container">
-              <p className="radio-container-title">Presentation</p>
-              {presentations.length && (
-                <Select
-                  options={presentations}
-                  onChange={(e) => onSelect(e, "presentation")}
-                />
-              )}
-            </div>
-            <div className="radio-container">
-              <p className="radio-container-title">Attendee</p>
-              {attendees.length && (
-                <Select
-                  options={attendees}
-                  onChange={(e) => onSelect(e, "attendee")}
-                />
-              )}
-            </div>
-            <Button text="Add" type="submit" />
-          </form>
+          {presentations.length > 0 && attendees.length > 0 ? (
+            <form id={"form"} onSubmit={handleSubmit}>
+              <div className="radio-container">
+                <p className="radio-container-title">Presentation</p>
+                {presentations.length && (
+                  <Select
+                    options={presentations}
+                    onChange={(e) => onSelect(e, "presentation")}
+                  />
+                )}
+              </div>
+              <div className="radio-container">
+                <p className="radio-container-title">Attendee</p>
+                {attendees.length && (
+                  <Select
+                    options={attendees}
+                    onChange={(e) => onSelect(e, "attendee")}
+                  />
+                )}
+              </div>
+              <Button text="Add" type="submit" />
+            </form>
+          ) : (
+            <p>Please create a Presentation and an Attendee first</p>
+          )}
         </div>
       </div>
     </>
