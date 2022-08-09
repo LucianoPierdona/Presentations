@@ -20,6 +20,11 @@ This is a sample project built with Nest.js and React.js where you can create yo
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## Live Demo
+
+[live-demo](https://62cb1fd3fb082671e02a8795--unrivaled-begonia-2a2a5f.netlify.app/)
+The application may take a few seconds to start if the database or the provider is not up.
+
 ### Built With
 
 Technologies used on this project
